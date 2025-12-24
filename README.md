@@ -26,6 +26,13 @@ Get the most recent cached results without re-executing.
 - Configurable staleness threshold
 - Great for frequently updated queries
 
+### Custom SQL (Plus)
+Write and execute arbitrary SQL queries directly.
+- Write custom SQL with `{{parameter}}` syntax
+- Dynamic parameter detection and input widgets
+- Local parameter substitution
+- **Requires Dune Plus subscription**
+
 ## Getting Started
 
 1. Get a Dune API key from [Dune API Keys](https://dune.com/apis?tab=keys)
@@ -55,13 +62,14 @@ Get the most recent cached results without re-executing.
 
 ```
 .
-├── main.py                 # Main page / introduction
+├── main.py                    # Main page / introduction
 ├── pages/
-│   ├── 1_🔍_Sync_Query.py  # Synchronous query execution
-│   ├── 2_⏳_Async_Query.py # Asynchronous query execution
-│   └── 3_📊_Latest_Results.py  # Get cached results
-├── shared_components.py    # Shared UI components and utilities
-├── pyproject.toml          # Project dependencies
+│   ├── 1_🔍_Sync_Query.py     # Synchronous query execution
+│   ├── 2_⏳_Async_Query.py    # Asynchronous query execution
+│   ├── 3_📊_Latest_Results.py # Get cached results
+│   └── 4_✍️_Custom_SQL.py     # Custom SQL execution (Plus)
+├── shared_components.py       # Shared UI components and utilities
+├── pyproject.toml             # Project dependencies
 └── README.md
 ```
 
