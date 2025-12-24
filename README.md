@@ -27,11 +27,18 @@ Get the most recent cached results without re-executing.
 - Great for frequently updated queries
 
 ### Custom SQL (Plus)
-Write and execute arbitrary SQL queries directly.
+Write and execute arbitrary SQL queries directly (sync).
 - Write custom SQL with `{{parameter}}` syntax
 - Dynamic parameter detection and input widgets
 - Local parameter substitution
 - **Requires Dune Plus subscription**
+
+### Async Custom SQL
+Execute arbitrary SQL asynchronously using `execute_sql` endpoint.
+- Write custom SQL with parameter support
+- Submit and get execution ID
+- Poll for completion, cancel if needed
+- May work without Plus subscription (uses `/sql/execute`)
 
 ## Getting Started
 
@@ -56,25 +63,38 @@ Write and execute arbitrary SQL queries directly.
 | Async Query (`execute_query`)        | Uses credits   | Free tier available |
 | Latest Results (`get_latest_result`) | **No credits** | Free tier available |
 | Custom SQL (`run_sql`)               | Uses credits   | **Plus required**   |
+| Async Custom SQL (`execute_sql`)     | Uses credits   | May work on Free    |
 | Create/Update Query                  | N/A            | **Plus required**   |
 
 ## Project Structure
 
 ```
 .
-├── main.py                    # Main page / introduction
+├── main.py                       # Main page / introduction
 ├── pages/
-│   ├── 1_🔍_Sync_Query.py     # Synchronous query execution
-│   ├── 2_⏳_Async_Query.py    # Asynchronous query execution
-│   ├── 3_📊_Latest_Results.py # Get cached results
-│   └── 4_✍️_Custom_SQL.py     # Custom SQL execution (Plus)
-├── shared_components.py       # Shared UI components and utilities
-├── pyproject.toml             # Project dependencies
+│   ├── 1_🔍_Sync_Query.py        # Synchronous query execution
+│   ├── 2_⏳_Async_Query.py       # Asynchronous query execution
+│   ├── 3_📊_Latest_Results.py    # Get cached results
+│   ├── 4_✍️_Custom_SQL.py        # Custom SQL execution (Plus)
+│   └── 5_🚀_Async_Custom_SQL.py  # Async custom SQL execution
+├── shared_components.py          # Shared UI components and utilities
+├── pyproject.toml                # Project dependencies
 └── README.md
 ```
 
 ## Resources
 
-- [duneanalytics/dune-client](https://github.com/duneanalytics/dune-client) - Official Python SDK
-- [Dune API Documentation](https://docs.dune.com/api-reference/overview/sdks#python)
-- [Streamlit Documentation](https://docs.streamlit.io/)
+- [duneanalytics/dune-client: A framework for interacting with Dune Analytics' officially supported API service](https://github.com/duneanalytics/dune-client)
+- [Client SDKs - Dune Docs](https://docs.dune.com/api-reference/overview/sdks#python)
+
+- [Secrets management - Streamlit Docs](https://docs.streamlit.io/develop/concepts/connections/secrets-management)
+- [st.secrets - Streamlit Docs](https://docs.streamlit.io/develop/api-reference/connections/st.secrets)
+
+---
+
+Simplest way => submit with Dune web UI, download using Query ID
+
+```bash
+curl -H "x-dune-api-key: $DUNE_API_KEY" "https://api.dune.com/api/v1/query/$QID/results?limit=1000"
+curl -H "x-dune-api-key: $DUNE_API_KEY" "https://api.dune.com/api/v1/query/$QID/results/csv?limit=1000"
+```
