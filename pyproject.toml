@@ -1,0 +1,22 @@
+[project]
+name = "dunesubmitter"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "dune-client>=1.10.0",
+    "python-dotenv>=1.2.1",
+    "streamlit>=1.52.2",
+    "watchdog>=6.0.0",
+]
+
+[[tool.uv.index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+
+[dependency-groups]
+dev = [
+    "black>=25.12.0",
+    "ipdb>=0.13.13",
+    "ruff>=0.14.10",
+]
