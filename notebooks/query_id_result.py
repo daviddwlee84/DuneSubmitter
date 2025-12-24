@@ -1,5 +1,7 @@
 import marimo
 
+# TODO: pagination?! https://docs.dune.com/api-reference/overview/sdks#filtering-and-pagination
+
 __generated_with = "0.18.4"
 app = marimo.App(width="medium", auto_download=["ipynb"])
 
@@ -7,12 +9,14 @@ app = marimo.App(width="medium", auto_download=["ipynb"])
 @app.cell
 def _():
     import marimo as mo
+
     return (mo,)
 
 
 @app.cell
 def _():
     from dune_client.client import DuneClient
+
     return (DuneClient,)
 
 
