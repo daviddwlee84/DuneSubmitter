@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "dune-client>=1.10.0",
+    "pandas>=2.2.0",
     "python-dotenv>=1.2.1",
     "streamlit>=1.52.2",
     "watchdog>=6.0.0",

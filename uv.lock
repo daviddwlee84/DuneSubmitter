@@ -264,6 +264,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "dune-client" },
+    { name = "pandas" },
     { name = "python-dotenv" },
     { name = "streamlit" },
     { name = "watchdog" },
@@ -279,6 +280,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "dune-client", specifier = ">=1.10.0" },
+    { name = "pandas", specifier = ">=2.2.0" },
     { name = "python-dotenv", specifier = ">=1.2.1" },
     { name = "streamlit", specifier = ">=1.52.2" },
     { name = "watchdog", specifier = ">=6.0.0" },
