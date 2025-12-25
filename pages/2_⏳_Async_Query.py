@@ -20,12 +20,14 @@ st.set_page_config(
 )
 
 st.title("⏳ Async Query Execution")
-st.markdown("""
+st.markdown(
+    """
 Start a query execution asynchronously, monitor its progress, and retrieve results 
 when complete. This is useful for long-running queries.
 
 **Note:** This uses execution credits from your Dune account.
-""")
+"""
+)
 
 # Sidebar
 with st.sidebar:
@@ -130,7 +132,7 @@ with tab1:
 
     # Start execution button
     if st.button(
-        "🚀 Start Execution", use_container_width=True, type="primary", key="start_exec"
+        "🚀 Start Execution", width="stretch", type="primary", key="start_exec"
     ):
         if not query_id:
             st.error("Please enter a Query ID.")
@@ -159,7 +161,9 @@ with tab1:
 
                 st.success(f"✅ Execution started!")
                 st.info(f"Execution ID: `{response.execution_id}`")
-                st.caption("Switch to the 'Check Existing Execution' tab to monitor progress.")
+                st.caption(
+                    "Switch to the 'Check Existing Execution' tab to monitor progress."
+                )
 
             except Exception as e:
                 st.error(f"❌ Failed to start execution: {e}")
@@ -186,18 +190,16 @@ with tab2:
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        check_status = st.button(
-            "🔄 Check Status", use_container_width=True, key="check_status"
-        )
+        check_status = st.button("🔄 Check Status", width="stretch", key="check_status")
 
     with col2:
         poll_and_wait = st.button(
-            "⏳ Poll Until Complete", use_container_width=True, key="poll_wait"
+            "⏳ Poll Until Complete", width="stretch", key="poll_wait"
         )
 
     with col3:
         cancel_exec = st.button(
-            "❌ Cancel Execution", use_container_width=True, key="cancel_exec"
+            "❌ Cancel Execution", width="stretch", key="cancel_exec"
         )
 
     if execution_id:
@@ -285,7 +287,7 @@ with tab2:
         st.markdown("### Get Results")
 
         if st.button(
-            "📥 Get Results", use_container_width=True, type="primary", key="get_results"
+            "📥 Get Results", width="stretch", type="primary", key="get_results"
         ):
             try:
                 with st.spinner("Fetching results..."):
@@ -309,9 +311,7 @@ with tab2:
                                 f"**State:** {results.state.value if results.state else 'N/A'}"
                             )
                             if results.times:
-                                st.write(
-                                    f"**Submitted:** {results.times.submitted_at}"
-                                )
+                                st.write(f"**Submitted:** {results.times.submitted_at}")
                                 st.write(
                                     f"**Started:** {results.times.execution_started_at}"
                                 )
@@ -323,7 +323,9 @@ with tab2:
                         display_results(df, max_display_rows)
 
                         # Download buttons
-                        display_download_buttons(df, f"execution_{execution_id}_results")
+                        display_download_buttons(
+                            df, f"execution_{execution_id}_results"
+                        )
 
                         # Column info
                         display_column_info(df)
@@ -332,4 +334,3 @@ with tab2:
                 st.error(f"❌ Failed to get results: {e}")
     else:
         st.info("Enter an execution ID to check status or get results.")
-

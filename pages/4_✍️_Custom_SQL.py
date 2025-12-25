@@ -173,7 +173,7 @@ with col2:
 
 # Execute button
 submitted = st.button(
-    "🚀 Execute Query", use_container_width=True, type="primary", key="custom_sql_submit"
+    "🚀 Execute Query", width="stretch", type="primary", key="custom_sql_submit"
 )
 
 # Handle form submission

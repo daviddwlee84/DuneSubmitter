@@ -212,7 +212,12 @@ def _(dune, mo):
 
 
 @app.cell
-def _():
+def _(mo):
+    mo.md(r"""
+    Datapoints per credit (API or CSV): 1,000
+
+    [Export Data Out of Dune - Dune Docs](https://docs.dune.com/learning/how-tos/export-data-out#costs-for-exporting-data)
+    """)
     return
 
 

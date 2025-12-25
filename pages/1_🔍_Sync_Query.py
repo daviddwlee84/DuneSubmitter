@@ -22,12 +22,14 @@ st.set_page_config(
 )
 
 st.title("🔍 Sync Query Execution")
-st.markdown("""
+st.markdown(
+    """
 Execute an existing Dune query by its Query ID. The execution will wait until 
 the query completes and return the results.
 
 **Note:** This uses execution credits from your Dune account.
-""")
+"""
+)
 
 # Sidebar
 with st.sidebar:
@@ -163,7 +165,7 @@ with col2:
     )
 
 # Execute button
-submitted = st.button("🚀 Execute Query", use_container_width=True, type="primary")
+submitted = st.button("🚀 Execute Query", width="stretch", type="primary")
 
 # Handle execution
 if submitted:
@@ -225,4 +227,3 @@ if submitted:
 
             # Column info
             display_column_info(df)
-

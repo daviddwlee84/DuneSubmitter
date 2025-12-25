@@ -155,7 +155,7 @@ LIMIT 100""",
 
     # Submit button
     if st.button(
-        "🚀 Start Execution", use_container_width=True, type="primary", key="start_sql_exec"
+        "🚀 Start Execution", width="stretch", type="primary", key="start_sql_exec"
     ):
         if not sql_query.strip():
             st.error("Please enter a SQL query.")
@@ -224,17 +224,17 @@ with tab2:
 
     with col1:
         check_status = st.button(
-            "🔄 Check Status", use_container_width=True, key="check_sql_status"
+            "🔄 Check Status", width="stretch", key="check_sql_status"
         )
 
     with col2:
         poll_and_wait = st.button(
-            "⏳ Poll Until Complete", use_container_width=True, key="poll_sql_wait"
+            "⏳ Poll Until Complete", width="stretch", key="poll_sql_wait"
         )
 
     with col3:
         cancel_exec = st.button(
-            "❌ Cancel Execution", use_container_width=True, key="cancel_sql_exec"
+            "❌ Cancel Execution", width="stretch", key="cancel_sql_exec"
         )
 
     if execution_id:
@@ -325,7 +325,7 @@ with tab2:
         st.markdown("### Get Results")
 
         if st.button(
-            "📥 Get Results", use_container_width=True, type="primary", key="get_sql_results"
+            "📥 Get Results", width="stretch", type="primary", key="get_sql_results"
         ):
             try:
                 with st.spinner("Fetching results..."):

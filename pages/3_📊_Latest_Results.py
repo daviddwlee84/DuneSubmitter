@@ -18,12 +18,14 @@ st.set_page_config(
 )
 
 st.title("📊 Latest Results")
-st.markdown("""
+st.markdown(
+    """
 Get the most recent cached results for a query **without re-executing it**.
 
 **This does NOT use execution credits!** Perfect for frequently checking query results
 or retrieving data from queries that are scheduled to run periodically.
-""")
+"""
+)
 
 # Sidebar
 with st.sidebar:
@@ -59,7 +61,9 @@ def get_latest_results_cached(
             results = client.get_latest_result(query_id, max_age_hours=max_age_hours)
         else:
             # Use a very large value to always get cached results without re-executing
-            results = client.get_latest_result(query_id, max_age_hours=2191)  # ~3 months
+            results = client.get_latest_result(
+                query_id, max_age_hours=2191
+            )  # ~3 months
 
         rows = results.result.rows if results.result else []
         return {
@@ -67,7 +71,9 @@ def get_latest_results_cached(
             "execution_id": results.execution_id,
             "state": results.state.value if results.state else None,
             "submitted_at": (
-                str(results.times.submitted_at) if results.times and results.times.submitted_at else None
+                str(results.times.submitted_at)
+                if results.times and results.times.submitted_at
+                else None
             ),
             "execution_ended_at": (
                 str(results.times.execution_ended_at)
@@ -133,7 +139,7 @@ force_refresh = st.checkbox(
 )
 
 # Fetch button
-if st.button("📥 Get Latest Results", use_container_width=True, type="primary"):
+if st.button("📥 Get Latest Results", width="stretch", type="primary"):
     if not query_id:
         st.error("Please enter a Query ID.")
         st.stop()
@@ -200,4 +206,3 @@ if st.button("📥 Get Latest Results", use_container_width=True, type="primary"
 
             # Column info
             display_column_info(df)
-

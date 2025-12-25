@@ -131,7 +131,7 @@ def display_results(
     # Interactive dataframe display
     st.dataframe(
         display_df,
-        use_container_width=True,
+        width="stretch",
         height=min(400, 35 * len(display_df) + 38),  # Dynamic height
     )
 
@@ -157,7 +157,7 @@ def display_download_buttons(
             data=csv_data,
             file_name=f"{filename_prefix}.csv",
             mime="text/csv",
-            use_container_width=True,
+            width="stretch",
         )
 
     with col2:
@@ -168,7 +168,7 @@ def display_download_buttons(
             data=json_data,
             file_name=f"{filename_prefix}.json",
             mime="application/json",
-            use_container_width=True,
+            width="stretch",
         )
 
 
@@ -187,7 +187,7 @@ def display_column_info(df: pd.DataFrame) -> None:
                 ],
             }
         )
-        st.dataframe(col_info, use_container_width=True, hide_index=True)
+        st.dataframe(col_info, width="stretch", hide_index=True)
 
 
 def results_to_dataframe(results: Any) -> pd.DataFrame:

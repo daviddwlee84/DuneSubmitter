@@ -90,6 +90,8 @@ Execute arbitrary SQL asynchronously using `execute_sql` endpoint.
 - [Secrets management - Streamlit Docs](https://docs.streamlit.io/develop/concepts/connections/secrets-management)
 - [st.secrets - Streamlit Docs](https://docs.streamlit.io/develop/api-reference/connections/st.secrets)
 
+- [Export Data Out of Dune - Dune Docs](https://docs.dune.com/learning/how-tos/export-data-out#costs-for-exporting-data)
+
 ---
 
 Simplest way => submit with Dune web UI, download using Query ID
@@ -98,3 +100,5 @@ Simplest way => submit with Dune web UI, download using Query ID
 curl -H "x-dune-api-key: $DUNE_API_KEY" "https://api.dune.com/api/v1/query/$QID/results?limit=1000"
 curl -H "x-dune-api-key: $DUNE_API_KEY" "https://api.dune.com/api/v1/query/$QID/results/csv?limit=1000"
 ```
+
+> `{"error":"This api request would exceed your configured datapoint limit per request. Please visit your subscription settings on dune.com and adjust your limits to perform this request."}`
